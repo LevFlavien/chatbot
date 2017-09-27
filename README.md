@@ -2,11 +2,11 @@
 Projet Webservices - Bot de conversation instantanée.
 
 <p><B>GROUPE :</B> 
-<p>- Flavien LEVESQUE</p>
-<p>- Romain ETIENNE</p>
-<p>- Adrien EXCOFFIER</p>
-<p>- Alex MEDINA</p>
-<p>- Amandine BUCAS</p>
+- Flavien LEVESQUE
+- Romain ETIENNE
+- Adrien EXCOFFIER
+- Alex MEDINA
+- Amandine BUCAS
 </p>
 
 Date rendu : 25/10/17
