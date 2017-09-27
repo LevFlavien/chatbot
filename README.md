@@ -15,7 +15,7 @@ Projet Webservices - Bot de conversation instantanée.
 <p><B>ORAL :</B> 
 13h / 20min soutenance (ce qu'on a fait, comment, la stack, objectif du bot) - 10 min de questions</p>
 
-<p><B>Elements demandés :</B> 
+<p><B>ELEMENTS DEMANDES :</B> 
 - <B>ChatBot Messenger</B>
 	 <p> : utiliser les web hooks (notification)
 - <B>API messenger</B>
