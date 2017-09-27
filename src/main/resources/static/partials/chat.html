@@ -1,0 +1,15 @@
+{{messages}}
+<div>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>message</th>
+            <th>expediteur</th>
+        </tr>
+        <tr ng-repeat="message in messages">
+            <td>{{message.timeStamp}}</td>
+            <td>{{message.contenu}}</td>
+            <td>{{message.expediteur}}</td>
+        </tr>
+    </table>
+</div>

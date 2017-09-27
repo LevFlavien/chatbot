@@ -29,7 +29,7 @@ public class Message implements Serializable{
 	@Indexed
 	private String idUser;
 	
-	List<Map<String, Object>> messages;
+	List<Map<String, Object>> conversation;
 
 	public Message() {
 		super();
@@ -43,7 +43,7 @@ public class Message implements Serializable{
 		super();
 		this.id = id;
 		this.idUser = idUser;
-		this.messages = messages;
+		this.conversation = messages;
 	}
 	
 	public void addMessage(String contenu, Boolean expediteur) {
@@ -51,7 +51,7 @@ public class Message implements Serializable{
 		map.put(TIMESTAMP, System.currentTimeMillis());
 		map.put(CONTENU, contenu);
 		map.put(EXPEDITEUR, expediteur);
-		this.messages.add(map);
+		this.conversation.add(map);
 	}
 
 	public String getId() {
@@ -63,17 +63,17 @@ public class Message implements Serializable{
 		return idUser;
 	}
 
-	public List<Map<String, Object>> getMessages() {
-		return messages;
+	public List<Map<String, Object>> getConversation() {
+		return conversation;
 	}
 
-	public void setMessages(List<Map<String, Object>> messages) {
-		this.messages = messages;
+	public void setConversation(List<Map<String, Object>> conversation) {
+		this.conversation = conversation;
 	}
 
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", idUser=" + idUser + ", messages=" + messages + "]";
+		return "Message [id=" + id + ", idUser=" + idUser + ", conversation=" + conversation + "]";
 	}
 
 	@Override
@@ -97,10 +97,4 @@ public class Message implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
 }

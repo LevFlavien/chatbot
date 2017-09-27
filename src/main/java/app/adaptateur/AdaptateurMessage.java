@@ -43,8 +43,10 @@ public class AdaptateurMessage {
 	
 	@GET
 	@Path("/{id}")
-	public Message getMessage(@PathParam("id") String id) {
-		return gestionMessages.get(id);
+	public List<Map<String, Object>> getConversation(@PathParam("id") String id) {
+
+		return gestionMessages.getByIdUser(id).getConversation();
+		
 	}
 	
 	@GET
