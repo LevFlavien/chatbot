@@ -9,7 +9,7 @@ Groupe :
 - Amandine BUCAS
 
 Date rendu : 25/10/17
-<p> Oral : 13h / 20min soutenance (ce qu'on a fait, comment, la stack, objectif du bot) - 10 min de questions
+<p> <B>Oral : </B> 13h / 20min soutenance (ce qu'on a fait, comment, la stack, objectif du bot) - 10 min de questions
 
 Elements demandés : 
  - ChatBot Messenger
