@@ -1,14 +1,15 @@
 package app.gestion;
 
+import java.security.MessageDigest;
 import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
+import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import app.bean.User;
@@ -21,8 +22,7 @@ public class GestionUser {
 	@Autowired
 	MongoTemplate mongoTemplate;
 	
-	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
+	MessageDigest messageDigest;
 	
 	/**
      * Récupère un User de la base mongo à partir de son login.
@@ -52,11 +52,7 @@ public class GestionUser {
      * @return l'User actuellement connecté
      */
     public List<User> getList() {
-    	LOG.info("get List");
-        List<User> users = mongoTemplate.findAll(User.class);
-
-        LOG.info("users = "+ users);
-        return users;
+        return mongoTemplate.findAll(User.class);
     }
 
     /**
@@ -66,7 +62,8 @@ public class GestionUser {
      * @return l'User effectivement ajouté (avec id)
      */
     public User add(final User user) {
-    	user.setMdp(passwordEncoder.encode(user.getMdp()));
+    	BasicPasswordEncryptor enc = new BasicPasswordEncryptor();
+    	user.setMdp(enc.encryptPassword(user.getMdp()));
     	LOG.info(user);
         mongoTemplate.insert(user);
         return user;

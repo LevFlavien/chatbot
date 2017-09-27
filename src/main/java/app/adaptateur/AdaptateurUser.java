@@ -6,6 +6,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -13,7 +14,6 @@ import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import app.bean.User;
@@ -35,6 +35,17 @@ public class AdaptateurUser {
 		return gestionUser.getList();
 	}
 	
+	@GET
+	@Path("/{id}")
+	public User getUser(@PathParam("id") String idUser) {
+		return gestionUser.getById(idUser);
+	}
+	
+	@GET
+	public User getUserByMail(@QueryParam("mail") String mail) {
+		return gestionUser.get(mail);
+	}
+	
 	@POST
 	@Path("/add")
 	public Response addUser(@QueryParam("user") User user) {
@@ -45,10 +56,21 @@ public class AdaptateurUser {
 		return Response.ok().build();
 	}
 	
-	@DELETE
-	@Path("/")
-	public Response removeUser(@QueryParam("id") String id) {
+	@GET
+	@Path("/generateDB")
+	public Response generateDB() {
+		gestionUser.add(new User(null, "Alex", "Medina", "alex.medina@epsi.fr", "amedina"));
+		gestionUser.add(new User(null, "Amandine", "Medina", "amandine.medina@epsi.fr", "abucas"));
+		gestionUser.add(new User(null, "Adrien", "Medina", "adrien.medina@epsi.fr", "aexcoffier"));
+		gestionUser.add(new User(null, "Romain", "Medina", "romain.medina@epsi.fr", "retienne"));
+		gestionUser.add(new User(null, "Flavien", "Medina", "flavien.medina@epsi.fr", "flevesque"));
 		
+		return Response.ok().build();
+	}
+	
+	@DELETE
+	@Path("/{id}")
+	public Response removeUser(@PathParam("id") String id) {
 		gestionUser.delete(id);
 		return Response.ok().build();
 	}
