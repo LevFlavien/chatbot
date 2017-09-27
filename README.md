@@ -17,11 +17,11 @@ Projet Webservices - Bot de conversation instantanée.
 
 <p><p><B>ELEMENTS DEMANDES :</B></p> 
 <p> - <B>ChatBot Messenger</B>
-	 <p>  utiliser les web hooks (notification)
+	 <p>   utiliser les web hooks (notification)
 <p> - <B>API messenger</B>
-	 <p>  langage au choix
-	 <p>  service pour chatbot (back) / TU
-	 <p>  front : voir les messages publiés par les utilisateurs (stockage en base)
-	 <p>  doc d'API
+	 <p>   langage au choix
+	 <p>   service pour chatbot (back) / TU
+	 <p>   front : voir les messages publiés par les utilisateurs (stockage en base)
+	 <p>   doc d'API
 <p> - <B>Monitoring</B> (connaître l'état de l'appli)
 <p> - <B>Alerting</B> (notification crash)</p>
