@@ -13,11 +13,11 @@ Date rendu : 25/10/17
 
 Elements demandés : 
  - ChatBot Messenger
-	 : utiliser les web hooks (notification)
+	 <p> : utiliser les web hooks (notification)
 - API messenger
-	 : langage au choix
-	 : service pour chatbot (back) / TU
-	 : front : voir les messages publiés par les utilisateurs (stockage en base)
-	 : doc d'API
+	 <p> : langage au choix
+	 <p> : service pour chatbot (back) / TU
+	 <p> : front : voir les messages publiés par les utilisateurs (stockage en base)
+	 <p> : doc d'API
 - Monitoring (connaître l'état de l'appli)
 - Alerting (notification crash)
