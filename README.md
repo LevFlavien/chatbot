@@ -2,7 +2,8 @@
 Projet Webservices - Bot de conversation instantanée.
 
 Elements demandés : 
-- back/front affichage des conversations
+- 2 back / 1 front - affichage des conversations
+- créer page FB
 - monitoring
 - alerting
 - TU
