@@ -97,4 +97,5 @@ public class Message implements Serializable{
 			return false;
 		return true;
 	}
+
 }

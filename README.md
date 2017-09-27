@@ -1,19 +1,27 @@
-# CHATBOT
+# CHATBOT - backFacebookAPI
 Projet Webservices - Bot de conversation instantanée.
 
-Elements demandés : 
-- back/front affichage des conversations
-- monitoring
-- alerting
-- TU
-- doc API (Swagger)
+<p><p><B>GROUPE :</B>
+<p>- Flavien LEVESQUE</p>
+<p>- Romain ETIENNE</p>
+<p>- Adrien EXCOFFIER</p>
+<p>- Alex MEDINA</p>
+<p>- Amandine BUCAS</p>
+</p></p>
 
-Groupe : 
-- Flavien LEVESQUE
-- Romain ETIENNE
-- Adrien EXCOFFIER
-- Alex MEDINA
-- Amandine BUCAS
+<p><p><B>DATE DE RENDU :</B>
+25/10/17</p></p>
 
-Date rendu : 25/10/17
-Oral : 13h
+<p><p><B>ORAL :</B> 
+13h / 20min soutenance (ce qu'on a fait, comment, la stack, objectif du bot) - 10 min de questions</p></p>
+
+<p><p><B>ELEMENTS DEMANDES :</B>
+<p> - <B>ChatBot Messenger</B>
+	      <p> utiliser les web hooks (notification)
+<p> - <B>API messenger</B>
+	      <p> langage au choix
+	      <p> service pour chatbot (back) / TU
+	      <p> front : voir les messages publiés par les utilisateurs (stockage en base)
+	      <p> doc d'API
+<p> - <B>Monitoring</B> (connaître l'état de l'appli)
+<p> - <B>Alerting</B> (notification crash)</p></p>
