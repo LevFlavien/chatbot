@@ -1,4 +1,4 @@
-# chatbot
+# CHATBOT
 Projet Webservices - Bot de conversation instantanée.
 
 Elements demandés : 
