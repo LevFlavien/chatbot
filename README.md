@@ -9,7 +9,7 @@ Elements demandés :
 - doc API (Swagger)
 
 Groupe : 
-- Flavien LESVESQUE
+- Flavien LEVESQUE
 - Romain ETIENNE
 - Adrien EXCOFFIER
 - Alex MEDINA
