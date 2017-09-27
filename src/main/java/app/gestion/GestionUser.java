@@ -21,9 +21,7 @@ public class GestionUser {
 	
 	@Autowired
 	MongoTemplate mongoTemplate;
-	
-	MessageDigest messageDigest;
-	
+		
 	/**
      * Récupère un User de la base mongo à partir de son login.
      * @param loginUser le login NT

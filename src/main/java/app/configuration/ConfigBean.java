@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.mongodb.Mongo;
 
+import app.gestion.GestionMessages;
 import app.gestion.GestionUser;
 
 @Configuration
@@ -19,6 +20,11 @@ public class ConfigBean {
 	@Bean
 	public GestionUser gestionUser() {
 		return new GestionUser();
+	}
+	
+	@Bean
+	public GestionMessages gestionMessages() {
+		return new GestionMessages();
 	}
 
 }

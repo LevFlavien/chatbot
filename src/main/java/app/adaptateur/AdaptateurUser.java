@@ -31,7 +31,6 @@ public class AdaptateurUser {
 		
 	@GET
 	public List<User> getUsers() {
-		LOG.info("get");
 		return gestionUser.getList();
 	}
 	
@@ -42,7 +41,8 @@ public class AdaptateurUser {
 	}
 	
 	@GET
-	public User getUserByMail(@QueryParam("mail") String mail) {
+	@Path("/mail/{mail}")
+	public User getUserByMail(@PathParam("mail") String mail) {
 		return gestionUser.get(mail);
 	}
 	
