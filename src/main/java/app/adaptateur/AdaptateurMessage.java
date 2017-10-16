@@ -1,9 +1,11 @@
 package app.adaptateur;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -44,7 +46,7 @@ public class AdaptateurMessage {
 	@GET
 	@Path("/{id}")
 	public List<Map<String, Object>> getConversation(@PathParam("id") String id) {
-
+		
 		return gestionMessages.getByIdUser(id).getConversation();
 		
 	}
@@ -70,19 +72,26 @@ public class AdaptateurMessage {
 	public Response generateDB() {
 		List<Map<String, Object>> messages = new ArrayList<>();
 		Map<String, Object> mess = new HashMap<>();
-		mess.put(Message.TIMESTAMP, System.currentTimeMillis());
-		mess.put(Message.CONTENU, "message1");
+		mess.put(Message.TIMESTAMP, new Timestamp(System.currentTimeMillis()));
+		mess.put(Message.CONTENU, "envoyé");
 		mess.put(Message.EXPEDITEUR, true);
 		messages.add(mess);
 		
 		mess = new HashMap<>();
-		mess.put(Message.TIMESTAMP, System.currentTimeMillis());
-		mess.put(Message.CONTENU, "message2");
+		mess.put(Message.TIMESTAMP, new Timestamp(System.currentTimeMillis()));
+		mess.put(Message.CONTENU, "reçu");
 		mess.put(Message.EXPEDITEUR, false);
 		messages.add(mess);
+		LOG.info(messages);
 		
-		gestionMessages.add(new Message(null, gestionUser.get("alex.medina@epsi.fr").getId(), messages));
-		
+		Message message1 = gestionMessages.add(new Message(null, gestionUser.get("alex.medina@epsi.fr").getId(), messages));
+		gestionMessages.add(new Message(null, gestionUser.get("amandine.medina@epsi.fr").getId(), messages));
+		gestionMessages.add(new Message(null, gestionUser.get("adrien.medina@epsi.fr").getId(), messages));
+		gestionMessages.add(new Message(null, gestionUser.get("romain.medina@epsi.fr").getId(), messages));
+
+		message1.addMessage("envoyé2", true);
+		message1.addMessage("recu2", false);
+		gestionMessages.update(message1);
 		return Response.ok().build();
 	}
 	

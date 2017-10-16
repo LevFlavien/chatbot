@@ -1,15 +1,30 @@
-{{messages}}
-<div>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>message</th>
-            <th>expediteur</th>
-        </tr>
-        <tr ng-repeat="message in messages">
-            <td>{{message.timeStamp}}</td>
-            <td>{{message.contenu}}</td>
-            <td>{{message.expediteur}}</td>
-        </tr>
-    </table>
-</div>
+<container>
+    <div class="row-fluid">
+       <div class="col-xs-6">
+          <div class="table-responsive">
+            <table class="table table-striped" style="display: inline-block">
+                <tr>
+                    <th>Personne</th>
+                </tr>
+                <tr ng-repeat="user in users">
+                    <td ng-click="changeUser(user.id)">{{user.prenom}} {{user.nom}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+        <div>
+            <table class="table table-striped" style="float: left">
+                <tr>
+                    <th>Date</th>
+                    <th>message</th>
+                </tr>
+                <tr ng-repeat="message in messages">
+                    <td>{{timeConverter(message.timeStamp)}}</td>
+                    <td class="expe_{{message.expediteur}}">{{message.contenu}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</container>

@@ -1,6 +1,7 @@
 package app.bean;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +49,7 @@ public class Message implements Serializable{
 	
 	public void addMessage(String contenu, Boolean expediteur) {
 		Map<String, Object> map = new HashMap<>();
-		map.put(TIMESTAMP, System.currentTimeMillis());
+		map.put(TIMESTAMP, new Timestamp(System.currentTimeMillis()));
 		map.put(CONTENU, contenu);
 		map.put(EXPEDITEUR, expediteur);
 		this.conversation.add(map);

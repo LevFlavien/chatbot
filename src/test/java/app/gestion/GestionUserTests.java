@@ -27,7 +27,9 @@ public class GestionUserTests {
 	public void test() {
 		User user1 = new User(null, "user1", "nom", "user1@chatbot.fr", "mdp");
 		user1 = gestionUser.add(user1);
+		
 		LOG.info(user1);
+		gestionUser.delete(user1.getId());
 	}
 
 }
