@@ -67,7 +67,15 @@ body {
 	border: 1px solid black;
 }
 
-.results:hover {
+.resultsper {
+	color: RoyalBlue;
+	font-size: 13px;
+	font-family: Comic Sans MS, Arial, sans-serif;
+	text-align: center;
+	border: 1px solid black;
+}
+
+.resultsper:hover {
 	font-weight: bold;
 }
 
