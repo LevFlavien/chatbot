@@ -3,45 +3,52 @@ package app.bean;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/** Déclaration de l'Objet */
+
+//Utilise la collection Users dans la base Mongo
 @Document(collection="Users")
 public class User implements Serializable{
 	
-	/**
-	 * 
-	 */
+	/** Autogénéré */
 	private static final long serialVersionUID = 1L;
 
+	/** Id du message */
 	@Id
 	private String id;
 	
-	@Indexed
-	private String mail;
-	
+	/** Nom du User */
 	private String nom;
 	
+	/** Prenom du User */
 	private String prenom;
 	
-	private String mdp;
-	
+	/** Constructeur */
 	public User() {
 		super();
 	}
 	
+	/**
+	 * Constructeur
+	 * @param id du message, peut être null
+	 */
 	public User(String id) {
 		this.id = id;
 	}
 
-	public User(String id, String nom, String prenom, String mail, String mdp) {
+	/**
+	 * Constructeur
+	 * @param id du user
+	 * @param nom du user
+	 * @param prenom du user
+	 */
+	public User(String id, String nom, String prenom) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.mail = mail;
-		this.mdp = mdp;
-			
+
 	}
 
 	public String getId() {
@@ -68,21 +75,9 @@ public class User implements Serializable{
 		this.prenom = prenom;
 	}
 
-	public String getMail() {
-		return mail;
-	}
-
-	public String getMdp() {
-		return mdp;
-	}
-	
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", mail=" + mail + ", nom=" + nom + ", prenom=" + prenom + ", mdp=" + mdp + "]";
+		return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
 	}
 
 }

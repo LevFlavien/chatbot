@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -25,48 +25,74 @@ import app.bean.Message;
 import app.gestion.GestionMessages;
 import app.gestion.GestionUser;
 
+/**
+ * Point d'entrée (et déclaration) des services REST pour les messages, appelle les fonctions métier sous-jacentes. Chemin du
+ * service REST est définit par /messages
+ * @author alexm
+ *
+ */
 @Component
 @Path("/messages")
 @Produces(MediaType.APPLICATION_JSON)
 public class AdaptateurMessage {
 	
+	/** LOG de l'application */
 	private static Logger LOG = Logger.getLogger(AdaptateurMessage.class);
 	
+	/** DAO des messages */
 	@Autowired
 	GestionMessages gestionMessages;
 	
+	/** DAO des utilisateurs */
 	@Autowired
 	GestionUser gestionUser;
 		
+	/**
+	 * Récupère la liste de tous les messages
+	 * @return la liste des messages
+	 */
 	@GET
 	public List<Message> getMessages() {
 		return gestionMessages.getList();
 	}
 	
+	/**
+	 * Récupère la conversation d'un utilisateur
+	 * @param id du user 
+	 * @return sa conversation
+	 */
 	@GET
 	@Path("/{id}")
 	public List<Map<String, Object>> getConversation(@PathParam("id") String id) {
-		
 		return gestionMessages.getByIdUser(id).getConversation();
-		
 	}
 	
-	@GET
-	@Path("/user/{id}")
-	public Message getUserByMail(@PathParam("id") String id) {
-		return gestionMessages.getByIdUser(id);
-	}
-	
+	/**
+	 * Ajoute un message à une conversation
+	 * @param idUser user a qui ajouter un message
+	 * @param contenu du message
+	 * @param expediteur true si le bot envoie le message
+	 * @return une Response
+	 */
 	@POST
 	@Path("/add")
-	public Response addMessage(@QueryParam("message") Message message) {
-		LOG.info("add user " + message);
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public Response addMessage(@QueryParam("idUser") String idUser, @QueryParam("contenu") String contenu, @QueryParam("expediteur") Boolean expediteur) {
 		
-		gestionMessages.add(message);
+		Message message = gestionMessages.getByIdUser(idUser);
 		
-		return Response.ok().build();
+		message.addMessage(contenu, expediteur);
+		LOG.info("mise à jour du message " + message);
+		
+		gestionMessages.update(message);
+		
+		return Response.ok("Message ajouté", MediaType.APPLICATION_JSON).build();
 	}
 	
+	/**
+	 * Génère la base de données pour effectuer des tests rapide
+	 * @return une response OK
+	 */
 	@GET
 	@Path("/generateDB")
 	public Response generateDB() {
@@ -84,22 +110,27 @@ public class AdaptateurMessage {
 		messages.add(mess);
 		LOG.info(messages);
 		
-		Message message1 = gestionMessages.add(new Message(null, gestionUser.get("alex.medina@epsi.fr").getId(), messages));
-		gestionMessages.add(new Message(null, gestionUser.get("amandine.medina@epsi.fr").getId(), messages));
-		gestionMessages.add(new Message(null, gestionUser.get("adrien.medina@epsi.fr").getId(), messages));
-		gestionMessages.add(new Message(null, gestionUser.get("romain.medina@epsi.fr").getId(), messages));
+		Message message1 = gestionMessages.add(new Message(null, "1234", messages));
+		gestionMessages.add(new Message(null, "12345", messages));
+		gestionMessages.add(new Message(null, "123456", messages));
+		gestionMessages.add(new Message(null, "1234567", messages));
 
 		message1.addMessage("envoyé2", true);
 		message1.addMessage("recu2", false);
 		gestionMessages.update(message1);
-		return Response.ok().build();
+		return Response.ok("Base Générée", MediaType.APPLICATION_JSON).build();
 	}
 	
+	/**
+	 * Supprime un Message
+	 * @param id du Message
+	 * @return une response OK
+	 */
 	@DELETE
 	@Path("/{id}")
-	public Response removeUser(@PathParam("id") String id) {
+	public Response removeMessage(@PathParam("id") String id) {
 		gestionMessages.delete(id);
-		return Response.ok().build();
+		return Response.ok("Message supprimé", MediaType.APPLICATION_JSON).build();
 	}
 
 }
