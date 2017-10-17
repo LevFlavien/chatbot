@@ -3,7 +3,6 @@ package app.gestion;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -12,18 +11,22 @@ import org.springframework.stereotype.Service;
 
 import app.bean.Message;
 
+/**
+ * DAO des messages
+ * @author alexm
+ *
+ */
 @Service
 public class GestionMessages {
-
-	private static Logger LOG = Logger.getLogger(GestionMessages.class);
 	
+	/** Connection à la base Mongo */
 	@Autowired
 	MongoTemplate mongoTemplate;
 		
 	/**
      * Récupère un Message de la base mongo à partir de son id.
-     * @param loginUser le login NT
-     * @return le message correspondant ou null s'il n'a pas été trouvé
+     * @param id
+     * @return le message correspondant
      */
     public Message get(final String id) {
     	return mongoTemplate.findById(id, Message.class);
@@ -31,20 +34,24 @@ public class GestionMessages {
     }
 
     /**
-     * Récupérer un Message donné par l'id du user<br>
-     * .
+     * Récupérer un Message donné par l'id du user
      * @param idUser id de l'User
      * @return le message
      */
     public Message getByIdUser(final String idUser) {
-    	return mongoTemplate.findOne(new Query(Criteria.where("idUser").is(idUser.toLowerCase(Locale.FRANCE))),
+    	Message mess = mongoTemplate.findOne(new Query(Criteria.where("idUser").is(idUser.toLowerCase(Locale.FRANCE))),
                 Message.class);
+    	
+    	if(mess == null) {
+    		mess = add(new Message(null, idUser));
+    	}
+    	
+    	return mess;
                
     }
 
     /**
-     * Récupérer la liste des Users (fonction administrateur)<br>
-     * .
+     * Récupérer la liste des Users
      * @return l'User actuellement connecté
      */
     public List<Message> getList() {
@@ -52,8 +59,7 @@ public class GestionMessages {
     }
 
     /**
-     * Crée un nouvel User (fonction administrateur)<br>
-     * .
+     * Crée un nouvel User
      * @param user l'User à ajouter (sans l'id)
      * @return l'User effectivement ajouté (avec id)
      */
@@ -61,13 +67,11 @@ public class GestionMessages {
 
         mongoTemplate.insert(message);
         return message;
-
     }
 
     /**
-     * met à jour un Message<br>
-     * .
-     * @param message User à modifier (avec id)
+     * met à jour un Message
+     * @param message Message à modifier (avec id)
      */
     public void update(final Message message) {
 
@@ -76,7 +80,7 @@ public class GestionMessages {
 
     /**
      * Supprime un Message donné par son id <br>
-     * @param idUser id de l'User
+     * @param id du message
      */
     public void delete(final String id) {
 

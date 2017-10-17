@@ -25,26 +25,3 @@ myApp.config(function ($routeProvider, $httpProvider) {
 myApp.controller('ChatCtrl', function ($route, $scope, $rootScope, $location) {
 
 })
-
-
-/** Intercepteur HTTP => Autentification. */
-/*myApp.factory('IntercepteurHTTP', function ($rootScope, $q, $location) {
-    return function (promise) {
-        return promise.then(function (response) {
-            // surveillance de la reponse
-            $rootScope.reponse = response;
-            // ne rien faire si il n'a pas d'erreur
-            return response;
-        }, function (response) {
-            // fonction qui sera executee si Angular recoit une erreur http
-            // on teste si c'est une erreur 401.
-            if (response.status === 401) {
-                // l'utilisateur sera redirige vers la page accueil
-                $location.path('/');
-            }
-            // surveillance de la reponse
-            $rootScope.reponse = response;
-            return $q.reject(response);
-        });
-    };
-});*/

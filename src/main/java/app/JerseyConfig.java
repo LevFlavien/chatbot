@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 import app.adaptateur.AdaptateurMessage;
 import app.adaptateur.AdaptateurUser;
 
+/**
+ * Classe ajoutant les services Rest à la config Jersey
+ * @author alexm
+ *
+ */
 @Component
 public class JerseyConfig extends ResourceConfig {
 

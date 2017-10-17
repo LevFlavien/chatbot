@@ -9,9 +9,11 @@ import com.mongodb.Mongo;
 import app.gestion.GestionMessages;
 import app.gestion.GestionUser;
 
+/** Config des beans */
 @Configuration
 public class ConfigBean {
 	
+	/** MongoTemplate a déclarer pour les tests */
 	@Bean
 	public MongoTemplate mongoTemplate(){
 		return new MongoTemplate(new Mongo(), "chatbot");
