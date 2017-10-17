@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -77,8 +78,7 @@ public class AdaptateurMessage {
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Response addMessage(@QueryParam("idUser") String idUser, @QueryParam("contenu") String contenu, @QueryParam("expediteur") Boolean expediteur) {
-		
+	public Response addMessage(@FormParam("idUser") String idUser, @FormParam("contenu") String contenu, @FormParam("expediteur") Boolean expediteur) {
 		Message message = gestionMessages.getByIdUser(idUser);
 		
 		message.addMessage(contenu, expediteur);

@@ -39,6 +39,7 @@ public class GestionMessages {
      * @return le message
      */
     public Message getByIdUser(final String idUser) {
+    	
     	Message mess = mongoTemplate.findOne(new Query(Criteria.where("idUser").is(idUser.toLowerCase(Locale.FRANCE))),
                 Message.class);
     	

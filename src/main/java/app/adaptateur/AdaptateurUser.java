@@ -3,6 +3,7 @@ package app.adaptateur;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -67,7 +68,7 @@ public class AdaptateurUser {
 	 */
 	@POST
 	@Path("/add")
-	public Response addUser(@QueryParam("id") String id, @QueryParam("prenom") String prenom, @QueryParam("nom") String nom) {
+	public Response addUser(@FormParam("id") String id, @FormParam("prenom") String prenom, @FormParam("nom") String nom) {
 		Response resp;
 		if (gestionUser.getById(id) == null ) {
 			User user = new User(id, nom, prenom);

@@ -23,13 +23,13 @@ public class GestionUserTests {
 	
 	private static Logger LOG = Logger.getLogger(GestionUserTests.class);
 	
-	@Test
-	public void test() {
-		User user1 = new User(null, "user1", "nom", "user1@chatbot.fr", "mdp");
-		user1 = gestionUser.add(user1);
-		
-		LOG.info(user1);
-		gestionUser.delete(user1.getId());
-	}
+//	@Test
+//	public void test() {
+//		User user1 = new User(null, "user1", "nom");
+//		user1 = gestionUser.add(user1);
+//		
+//		LOG.info(user1);
+//		gestionUser.delete(user1.getId());
+//	}
 
 }
