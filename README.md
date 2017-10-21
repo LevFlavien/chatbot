@@ -33,20 +33,19 @@ Projet Webservices - Bot de conversation instantanée.
 <p>Veillez à avoir une base mongoDB en fonction pour utiliser l'application. La version utilisée est 3.4.9
 La database utilisée est "chatbot", elle sera crée automatiquement.</p>
 
-<p>2 collections sont disponibles :
-<p> 
+2 collections sont disponibles :
+
 - <B>Users</B>
-![Users](https://github.com/LevFlavien/chatbot/blob/master/images/users.png) </p>
+![Users](https://github.com/LevFlavien/chatbot/blob/master/images/users.png)
 
-<p>
 - <B>Messages</B>
-![Messages](https://github.com/LevFlavien/chatbot/blob/master/images/messages.png) </p></p>
+![Messages](https://github.com/LevFlavien/chatbot/blob/master/images/messages.png)
 
-<p>Pour ajouter du contenu dans "users", vous pouvez utiliser la commande :
+Pour ajouter du contenu dans "users", vous pouvez utiliser la commande :
 ```
-curl -X "POST" "http://localhost:8088/rest/users/add?id=1&nom=medina&prenom=alex" </p>
+curl -X "POST" "http://localhost:8088/rest/users/add?id=1&nom=medina&prenom=alex"
 ```
-<p>et dans "messages"
+et dans "messages"
 ```
-curl -X "POST" "http://localhost:8088/rest/messages/add?id=1&contenu=votre%20message&expediteur=false" </p>
+curl -X "POST" "http://localhost:8088/rest/messages/add?id=1&contenu=votre%20message&expediteur=false" 
 ```
