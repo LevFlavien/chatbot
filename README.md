@@ -41,11 +41,11 @@ La database utilisée est "chatbot", elle sera crée automatiquement.</p>
 - <B>Messages</B>
 ![Messages](https://github.com/LevFlavien/chatbot/blob/master/images/messages.png)
 
-Pour ajouter du contenu dans "users", vous pouvez utiliser la commande :
+Pour ajouter du contenu dans "users", vous pouvez accéder à l'url :
 ```
-curl -X "POST" "http://localhost:8088/rest/users/add?id=1&nom=medina&prenom=alex"
+http://localhost:8088/rest/users/generateDB
 ```
 et dans "messages"
 ```
-curl -X "POST" "http://localhost:8088/rest/messages/add?id=1&contenu=votre%20message&expediteur=false" 
+http://localhost:8088/rest/messages/generateDB
 ```
