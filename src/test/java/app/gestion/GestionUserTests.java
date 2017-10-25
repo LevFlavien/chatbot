@@ -1,6 +1,7 @@
 package app.gestion;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,21 @@ public class GestionUserTests {
 	
 	@Autowired
 	GestionUser gestionUser;
-	
-	private static Logger LOG = Logger.getLogger(GestionUserTests.class);
-	
-//	@Test
-//	public void test() {
-//		User user1 = new User(null, "user1", "nom");
-//		user1 = gestionUser.add(user1);
-//		
-//		LOG.info(user1);
-//		gestionUser.delete(user1.getId());
-//	}
+		
+	@Test
+	public void test() {
+		
+		User user = gestionUser.add(new User(null, "Alex", ""));
+		
+		User user2= gestionUser.getById(user.getId());
+		
+		Assert.assertEquals(user, user2);
+		
+		user.setNom("Medina");
+		gestionUser.update(user);
+		Assert.assertEquals(gestionUser.getById(user.getId()).getNom(), "Medina");
+		
+		gestionUser.delete(user.getId());
+	}
 
 }
